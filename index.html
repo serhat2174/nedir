@@ -27,7 +27,7 @@
   <h1>Nedir?</h1>
   <form onsubmit="displaySummary(); return false;">
     <input type="text" id="inputField" onkeyup="clearInput(event)">
-    <button type="submit">What Is?</button>
+    <button type="submit">Nedir?</button>
 </form>
 <br>
 <p id="summary"></p>
@@ -48,12 +48,12 @@
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error("No Wikipedia page found for: " + topic);
+          throw new Error("Bulunamadi: " + topic);
         }
       })
       .then(data => {
         if (data.extract.includes("may refer to")) {
-          document.getElementById("summary").innerHTML = "The input is ambiguous, please specify which page you are looking for.";
+          document.getElementById("summary").innerHTML = "Lutfen baska bir kelime deneyin.";
         } else {
           var summary = data.extract;
           var firstWord = summary.split(" ")[0];
@@ -87,12 +87,12 @@
             if (response.ok) {
               return response.json();
             } else {
-              throw new Error("No Wikipedia page found for: " + capitalizedTopic);
+              throw new Error("Bulunamadi: " + capitalizedTopic);
             }
           })
           .then(data => {
             if (data.extract.includes("may refer to")) {
-              document.getElementById("summary").innerHTML = "The input is ambiguous, please specify which page you are looking for.";
+              document.getElementById("summary").innerHTML = "Lutfen baska bir kelime deneyin.";
             } else {
               var summary = data.extract;
               summary = summary.split(". ");
